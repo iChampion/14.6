@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC46292E25486AFD00D0F68C /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC46292D25486AFD00D0F68C /* Persistance.swift */; };
 		BC5CF1732544472A004A2CA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5CF1722544472A004A2CA0 /* AppDelegate.swift */; };
 		BC5CF1752544472A004A2CA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5CF1742544472A004A2CA0 /* SceneDelegate.swift */; };
 		BC5CF1772544472A004A2CA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5CF1762544472A004A2CA0 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC46292D25486AFD00D0F68C /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
 		BC5CF16F2544472A004A2CA0 /* 14CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 14CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5CF1722544472A004A2CA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC5CF1742544472A004A2CA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				BC5CF1742544472A004A2CA0 /* SceneDelegate.swift */,
 				BC5CF1762544472A004A2CA0 /* ViewController.swift */,
 				BC5CF1782544472A004A2CA0 /* Main.storyboard */,
+				BC46292D25486AFD00D0F68C /* Persistance.swift */,
 				BC5CF17E2544472B004A2CA0 /* Assets.xcassets */,
 				BC5CF1802544472B004A2CA0 /* LaunchScreen.storyboard */,
 				BC5CF1832544472B004A2CA0 /* Info.plist */,
@@ -143,6 +146,7 @@
 				BC5CF1772544472A004A2CA0 /* ViewController.swift in Sources */,
 				BC5CF17D2544472A004A2CA0 /* _4CoreData.xcdatamodeld in Sources */,
 				BC5CF1732544472A004A2CA0 /* AppDelegate.swift in Sources */,
+				BC46292E25486AFD00D0F68C /* Persistance.swift in Sources */,
 				BC5CF1752544472A004A2CA0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
