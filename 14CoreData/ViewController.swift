@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var secondNameText: UITextField!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if Persistance.shared.userName != nil {
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         Persistance.shared.userName = nameText.text
         Persistance.shared.secondName = secondNameText.text
     }
