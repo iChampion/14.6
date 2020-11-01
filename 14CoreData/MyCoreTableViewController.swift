@@ -1,12 +1,11 @@
 import UIKit
+import CoreData
 
-class MyTableViewController: UITableViewController {
+class MyCoreTableViewController: UITableViewController {
 
+    var tasks: [NSManagedObject] = []
     
-    @IBAction func editTableBrn(_ sender: Any) {
-        tableView.setEditing(!tableView.isEditing, animated: true)
-    }
-    @IBAction func addItemBtn(_ sender: Any) {
+    @IBAction func addButton(_ sender: Any) {
         let alertContrl = UIAlertController(title: "Create item", message: nil, preferredStyle: .alert)
         alertContrl.addTextField { (textField) in
             textField.placeholder = "name item"
@@ -17,23 +16,33 @@ class MyTableViewController: UITableViewController {
                 let nameToSave = textField.text else {
                   return
               }
-            Main.shared.addItem(nameItem: nameToSave)
-            print(Main.shared.Items.count)
+            self.save(name: nameToSave)
             self.tableView.reloadData()
         }
         alertContrl.addAction(btn)
         alertContrl.addAction(canBtn)
         present(alertContrl, animated: true, completion: nil)
     }
-    
+    @IBAction func editBtn(_ sender: Any) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        Main.shared.loadUsersData()
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+      }
+      let managedContext = appDelegate.persistentContainer.viewContext
+      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Entity")
+      do {
+        tasks = try managedContext.fetch(fetchRequest)
+      } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+      }
+    }
 
-    }
 
     // MARK: - Table view data source
 
@@ -44,36 +53,19 @@ class MyTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Main.shared.Items.count
+        return tasks.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let curItem = Main.shared.Items[indexPath.row]
-        cell.textLabel?.text = curItem.name
-        if curItem.isComplete {
-            cell.accessoryType = .checkmark
-        }else{
-            cell.accessoryType = .none
-        }
+        let person = tasks[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = person.value(forKeyPath: "name") as? String
         return cell
     }
-
-
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            Main.shared.removeItem(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -82,37 +74,36 @@ class MyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if Main.shared.changeState(at: indexPath.row){
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }
+//        if MainCore.shared.changeState(at: indexPath.row){
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//        }else {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+//        }
     }
-
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        Main.shared.moveItem(f: fromIndexPath.row, to: to.row)
+//        MainCore.shared.moveItem(f: fromIndexPath.row, to: to.row)
         tableView.reloadData()
-
     }
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+
+    func save(name: String) {
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return
+      }
+      // 1
+      let managedContext = appDelegate.persistentContainer.viewContext
+      // 2
+      let entity = NSEntityDescription.entity(forEntityName: "Entity", in: managedContext)!
+      let person = NSManagedObject(entity: entity, insertInto: managedContext)
+      // 3
+      person.setValue(name, forKeyPath: "name")
+      // 4
+      do {
+        try managedContext.save()
+        tasks.append(person)
+      } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+      }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

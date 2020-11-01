@@ -18,6 +18,7 @@
 		BC5CF1822544472B004A2CA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5CF1802544472B004A2CA0 /* LaunchScreen.storyboard */; };
 		BCE598C1254A07A50058EE64 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE598C0254A07A50058EE64 /* MyTableViewController.swift */; };
 		BCE598C4254A08240058EE64 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE598C3254A08240058EE64 /* Main.swift */; };
+		BCE598D3254DED750058EE64 /* MyCoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE598D2254DED750058EE64 /* MyCoreTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		BC5CF1832544472B004A2CA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCE598C0254A07A50058EE64 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		BCE598C3254A08240058EE64 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		BCE598D2254DED750058EE64 /* MyCoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoreTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				BC5CF1782544472A004A2CA0 /* Main.storyboard */,
 				BCE598C3254A08240058EE64 /* Main.swift */,
 				BCE598C0254A07A50058EE64 /* MyTableViewController.swift */,
+				BCE598D2254DED750058EE64 /* MyCoreTableViewController.swift */,
 				BC46292D25486AFD00D0F68C /* Persistance.swift */,
 				BC5CF17E2544472B004A2CA0 /* Assets.xcassets */,
 				BC5CF1802544472B004A2CA0 /* LaunchScreen.storyboard */,
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE598D3254DED750058EE64 /* MyCoreTableViewController.swift in Sources */,
 				BC5CF1772544472A004A2CA0 /* ViewController.swift in Sources */,
 				BCE598C1254A07A50058EE64 /* MyTableViewController.swift in Sources */,
 				BC5CF17D2544472A004A2CA0 /* _4CoreData.xcdatamodeld in Sources */,
