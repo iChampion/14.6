@@ -6,7 +6,24 @@
          contextName = "Main.addItem(nameItem:):Main.swift">
       </ContextState>
       <ContextState
+         contextName = "WeatherTableViewController.viewDidLoad():WeatherTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in WeatherTableViewController.viewDidLoad():WeatherTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "WeatherTableViewController.tableView(_:numberOfRowsInSection:):WeatherTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Persistance.shared.array?.count ?? countLine">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Main.loadUsersData():Main.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Main.changeState(at:):Main.swift">
       </ContextState>
       <ContextState
          contextName = "MyCoreTableViewController.tableView(_:didSelectRowAt:):MyCoreTableViewController.swift">
@@ -15,9 +32,6 @@
                value = "item.value(forKeyPath: &quot;isComp&quot;) as! Bool">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Main.changeState(at:):Main.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

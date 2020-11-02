@@ -25,8 +25,8 @@ class WeatherTableViewController: UITableViewController {
                 self.a.append(myMilliseconds.toDay + " " + item.temp.eve.description)
             }
             Persistance.shared.array = self.a
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
