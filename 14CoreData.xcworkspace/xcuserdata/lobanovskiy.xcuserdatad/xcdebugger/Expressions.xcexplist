@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Main.addItem(nameItem:):Main.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Main.loadUsersData():Main.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MyCoreTableViewController.tableView(_:didSelectRowAt:):MyCoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.value(forKeyPath: &quot;isComp&quot;) as! Bool">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Main.changeState(at:):Main.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
