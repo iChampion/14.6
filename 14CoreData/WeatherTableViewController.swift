@@ -20,13 +20,11 @@ class WeatherTableViewController: UITableViewController {
             self.names = completion
             //print(names.timezone)
             self.countLine = self.names.daily.count
-            if self.countLine != 0 {
-                for item in self.names.daily {
-                    let myMilliseconds: UnixTime = item.dt
-                    self.a.append(myMilliseconds.toDay + " " + item.temp.eve.description)
-                }
-                Persistance.shared.array = self.a
+            for item in self.names.daily {
+                let myMilliseconds: UnixTime = item.dt
+                self.a.append(myMilliseconds.toDay + " " + item.temp.eve.description)
             }
+            Persistance.shared.array = self.a
         }
         self.tableView.reloadData()
     }
@@ -43,8 +41,7 @@ class WeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Persistance.shared.array!.count
+        return Persistance.shared.array?.count ?? countLine
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
