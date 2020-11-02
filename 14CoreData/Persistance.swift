@@ -17,6 +17,9 @@ class Persistance {
     
     private let kUserNameKey = "Persistance.kUserNameKey"
     private let kSecondNameKey = "Persistance.kSecondNameKey"
+    
+    private let kWeatherMoscowKey = "Persistance.kWeatherMoscowKey"
+    private let kListWeatherKey = "Persistance.kListWeatherKey"
 
     var userName: String? {
         set { UserDefaults.standard.set(newValue, forKey: kUserNameKey) }
@@ -25,6 +28,14 @@ class Persistance {
     var secondName: String? {
         set { UserDefaults.standard.set(newValue, forKey: kSecondNameKey) }
         get { return UserDefaults.standard.string(forKey: kSecondNameKey) }
+    }
+    var weaher: String? {
+        set { UserDefaults.standard.set(newValue, forKey: kWeatherMoscowKey) }
+        get { return UserDefaults.standard.string(forKey: kWeatherMoscowKey) }
+    }
+    var array: [String]? {
+        set { UserDefaults.standard.set(newValue, forKey: kListWeatherKey) }
+        get {  return UserDefaults.standard.stringArray(forKey: kListWeatherKey) }
     }
     private let realm = try! Realm()
     
