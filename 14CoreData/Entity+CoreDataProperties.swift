@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Entity {
+extension ToDoEntities {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Entity> {
-        return NSFetchRequest<Entity>(entityName: "Entity")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ToDoEntities> {
+        return NSFetchRequest<ToDoEntities>(entityName: "ToDoEntities")
     }
 
     @NSManaged public var name: String?

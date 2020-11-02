@@ -4,6 +4,7 @@ import CoreData
 class MyCoreTableViewController: UITableViewController {
 
     var tasks: [NSManagedObject] = []
+
     
     @IBAction func addButton(_ sender: Any) {
         let alertContrl = UIAlertController(title: "Create item", message: nil, preferredStyle: .alert)
@@ -35,7 +36,7 @@ class MyCoreTableViewController: UITableViewController {
           return
       }
       let managedContext = appDelegate.persistentContainer.viewContext
-      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Entity")
+      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ToDoEntities")
       do {
         tasks = try managedContext.fetch(fetchRequest)
       } catch let error as NSError {
@@ -57,9 +58,14 @@ class MyCoreTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let person = tasks[indexPath.row]
+        let item = tasks[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = person.value(forKeyPath: "name") as? String
+            cell.textLabel?.text = item.value(forKeyPath: "name") as? String
+        if (item.value(forKeyPath: "isComp") as? Bool)! {
+                cell.accessoryType = .checkmark
+            }else{
+                cell.accessoryType = .none
+            }
         return cell
     }
     
@@ -74,11 +80,13 @@ class MyCoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        if MainCore.shared.changeState(at: indexPath.row){
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//        }else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//        }
+        let item = tasks[indexPath.row]
+        if (item.value(forKeyPath: "isComp") as? Bool)!  {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            item.setValue(true, forKeyPath: "isComp")
+        }else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        }
     }
     
     // Override to support rearranging the table view.
@@ -89,19 +97,20 @@ class MyCoreTableViewController: UITableViewController {
 
     func save(name: String) {
       guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-        return
+      return
       }
       // 1
       let managedContext = appDelegate.persistentContainer.viewContext
       // 2
-      let entity = NSEntityDescription.entity(forEntityName: "Entity", in: managedContext)!
-      let person = NSManagedObject(entity: entity, insertInto: managedContext)
+      let entity = NSEntityDescription.entity(forEntityName: "ToDoEntities", in: managedContext)!
+      let task = NSManagedObject(entity: entity, insertInto: managedContext)
       // 3
-      person.setValue(name, forKeyPath: "name")
+      task.setValue(name, forKeyPath: "name")
+      task.setValue(false, forKeyPath: "isComp")
       // 4
       do {
         try managedContext.save()
-        tasks.append(person)
+        tasks.append(task)
       } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
       }
