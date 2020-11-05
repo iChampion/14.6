@@ -29,6 +29,11 @@ class Main {
         }
         return Items[index].isComplete
     }
+    func changeName(at index: Int, name: String) {
+        try! realm.write {
+            Items[index].name = name
+        }
+    }
     func moveItem(f:Int, to: Int){
         let select = Items[f]
         Items.remove(at: f)

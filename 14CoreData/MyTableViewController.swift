@@ -5,6 +5,7 @@ class MyTableViewController: UITableViewController {
     
     @IBAction func editTableBrn(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        tableView.allowsSelectionDuringEditing = !tableView.allowsSelectionDuringEditing
     }
     @IBAction func addItemBtn(_ sender: Any) {
         let alertContrl = UIAlertController(title: "Create item", message: nil, preferredStyle: .alert)
@@ -18,7 +19,7 @@ class MyTableViewController: UITableViewController {
                   return
               }
             Main.shared.addItem(nameItem: nameToSave)
-            print(Main.shared.Items.count)
+            //print(Main.shared.Items.count)
             self.tableView.reloadData()
         }
         alertContrl.addAction(btn)
@@ -51,6 +52,7 @@ class MyTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let curItem = Main.shared.Items[indexPath.row]
+        
         cell.textLabel?.text = curItem.name
         if curItem.isComplete {
             cell.accessoryType = .checkmark
@@ -82,10 +84,32 @@ class MyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if Main.shared.changeState(at: indexPath.row){
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        if tableView.allowsSelectionDuringEditing {
+            let alertContrl = UIAlertController(title: "Change item", message: nil, preferredStyle: .alert)
+            alertContrl.addTextField { (textField) in
+                textField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+            }
+            let canBtn = UIAlertAction(title: "cancel", style: .destructive, handler: nil)
+            let btn = UIAlertAction(title: "save", style: .cancel) { alert in
+                guard let textField = alertContrl.textFields?.first,
+                    let nameToSave = textField.text else {
+                      return
+                  }
+                Main.shared.changeName(at: indexPath.row, name: nameToSave)
+                //print(Main.shared.Items.count)
+                self.tableView.reloadData()
+            }
+            alertContrl.addAction(btn)
+            alertContrl.addAction(canBtn)
+            present(alertContrl, animated: true, completion: nil)
+           
+//            self.tableView.reloadData()
+        }else{
+            if Main.shared.changeState(at: indexPath.row){
+                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            }else {
+                tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            }
         }
     }
 
