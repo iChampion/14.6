@@ -15,21 +15,19 @@ class Task2 {
 
 class MainCore {
     static let shared = MainCore()
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task2] = []
     
     func save(name: String) {
         let item = Task2()
-        item.name = name
-        item.isComplete = false
-        tasks.append(item)
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
         let entity = NSEntityDescription.insertNewObject(forEntityName: "ToDoEntities", into: context)
         entity.setValue(name, forKeyPath: "name")
         entity.setValue(false, forKeyPath: "isComp")
         do{
             try context.save()
+            item.name = name
+            item.isComplete = false
+            tasks.append(item)
         }
         catch{
             print(error.localizedDescription)
@@ -37,9 +35,6 @@ class MainCore {
     }
     
     func getTasks(){
-        let app = UIApplication.shared.delegate as! AppDelegate
-        // creating context from app delegate...
-        let context = app.persistentContainer.viewContext
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
         do{
             // going to fetch all data...
@@ -61,8 +56,6 @@ class MainCore {
     
     func changeState(at index: Int) -> Bool {
         tasks[index].isComplete = !(tasks[index].isComplete)
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
         do{
             let result = try context.fetch(req)
@@ -81,8 +74,6 @@ class MainCore {
     }
     
     func changeName(at index: Int, name: String){
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
         do{
             let result = try context.fetch(req)
@@ -107,8 +98,6 @@ class MainCore {
         
     }
     func DeleteTask(task: Int){
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
         do{
             let result = try context.fetch(req)
