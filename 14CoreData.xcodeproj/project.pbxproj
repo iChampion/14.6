@@ -23,6 +23,9 @@
 		BCE5991225501E340058EE64 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5991125501E340058EE64 /* WeatherViewController.swift */; };
 		BCE59915255020670058EE64 /* WeatherFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE59914255020670058EE64 /* WeatherFeed.swift */; };
 		BCE599182550214C0058EE64 /* WeatherLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE599172550214C0058EE64 /* WeatherLoader.swift */; };
+		BCE5991B25541D0A0058EE64 /* MainCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5991A25541D0A0058EE64 /* MainCoreData.swift */; };
+		BCE5991F25541E250058EE64 /* ToDoEntities+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5991D25541E250058EE64 /* ToDoEntities+CoreDataProperties.swift */; };
+		BCE5992025541E250058EE64 /* ToDoEntities+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5991E25541E250058EE64 /* ToDoEntities+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		BCE5991125501E340058EE64 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		BCE59914255020670058EE64 /* WeatherFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFeed.swift; sourceTree = "<group>"; };
 		BCE599172550214C0058EE64 /* WeatherLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLoader.swift; sourceTree = "<group>"; };
+		BCE5991A25541D0A0058EE64 /* MainCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoreData.swift; sourceTree = "<group>"; };
+		BCE5991D25541E250058EE64 /* ToDoEntities+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ToDoEntities+CoreDataProperties.swift"; path = "/Users/lobanovskiy/Documents/14CoreData/14CoreData/ToDoEntities+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		BCE5991E25541E250058EE64 /* ToDoEntities+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ToDoEntities+CoreDataClass.swift"; path = "/Users/lobanovskiy/Documents/14CoreData/14CoreData/ToDoEntities+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,22 +95,25 @@
 		BC5CF1712544472A004A2CA0 /* 14CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				BC5CF1722544472A004A2CA0 /* AppDelegate.swift */,
-				BC5CF1742544472A004A2CA0 /* SceneDelegate.swift */,
-				BC5CF1762544472A004A2CA0 /* ViewController.swift */,
-				BC5CF1782544472A004A2CA0 /* Main.storyboard */,
-				BCE5990E25501E1A0058EE64 /* WeatherTableViewController.swift */,
-				BCE59914255020670058EE64 /* WeatherFeed.swift */,
-				BCE5991125501E340058EE64 /* WeatherViewController.swift */,
-				BCE599172550214C0058EE64 /* WeatherLoader.swift */,
-				BCE598C3254A08240058EE64 /* Main.swift */,
-				BCE598C0254A07A50058EE64 /* MyTableViewController.swift */,
-				BCE598D2254DED750058EE64 /* MyCoreTableViewController.swift */,
-				BC46292D25486AFD00D0F68C /* Persistance.swift */,
-				BC5CF17E2544472B004A2CA0 /* Assets.xcassets */,
-				BC5CF1802544472B004A2CA0 /* LaunchScreen.storyboard */,
-				BC5CF1832544472B004A2CA0 /* Info.plist */,
 				BC5CF17B2544472A004A2CA0 /* _4CoreData.xcdatamodeld */,
+				BC5CF1722544472A004A2CA0 /* AppDelegate.swift */,
+				BC5CF17E2544472B004A2CA0 /* Assets.xcassets */,
+				BC5CF1832544472B004A2CA0 /* Info.plist */,
+				BC5CF1802544472B004A2CA0 /* LaunchScreen.storyboard */,
+				BC5CF1782544472A004A2CA0 /* Main.storyboard */,
+				BCE598C3254A08240058EE64 /* Main.swift */,
+				BCE5991A25541D0A0058EE64 /* MainCoreData.swift */,
+				BCE598D2254DED750058EE64 /* MyCoreTableViewController.swift */,
+				BCE598C0254A07A50058EE64 /* MyTableViewController.swift */,
+				BC46292D25486AFD00D0F68C /* Persistance.swift */,
+				BC5CF1742544472A004A2CA0 /* SceneDelegate.swift */,
+				BCE5991E25541E250058EE64 /* ToDoEntities+CoreDataClass.swift */,
+				BCE5991D25541E250058EE64 /* ToDoEntities+CoreDataProperties.swift */,
+				BC5CF1762544472A004A2CA0 /* ViewController.swift */,
+				BCE59914255020670058EE64 /* WeatherFeed.swift */,
+				BCE599172550214C0058EE64 /* WeatherLoader.swift */,
+				BCE5990E25501E1A0058EE64 /* WeatherTableViewController.swift */,
+				BCE5991125501E340058EE64 /* WeatherViewController.swift */,
 			);
 			path = 14CoreData;
 			sourceTree = "<group>";
@@ -232,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE5991B25541D0A0058EE64 /* MainCoreData.swift in Sources */,
 				BCE598D3254DED750058EE64 /* MyCoreTableViewController.swift in Sources */,
 				BCE599182550214C0058EE64 /* WeatherLoader.swift in Sources */,
 				BCE5991225501E340058EE64 /* WeatherViewController.swift in Sources */,
@@ -239,6 +249,8 @@
 				BCE5990F25501E1A0058EE64 /* WeatherTableViewController.swift in Sources */,
 				BC5CF1772544472A004A2CA0 /* ViewController.swift in Sources */,
 				BCE598C1254A07A50058EE64 /* MyTableViewController.swift in Sources */,
+				BCE5992025541E250058EE64 /* ToDoEntities+CoreDataClass.swift in Sources */,
+				BCE5991F25541E250058EE64 /* ToDoEntities+CoreDataProperties.swift in Sources */,
 				BC5CF17D2544472A004A2CA0 /* _4CoreData.xcdatamodeld in Sources */,
 				BC5CF1732544472A004A2CA0 /* AppDelegate.swift in Sources */,
 				BC46292E25486AFD00D0F68C /* Persistance.swift in Sources */,

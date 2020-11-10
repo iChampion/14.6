@@ -77,7 +77,7 @@
             <objects>
                 <tableViewController id="7vV-h4-3Ws" customClass="WeatherTableViewController" customModule="_4CoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZFl-f5-w5S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="379.66666666666669"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -274,7 +274,7 @@
         <scene sceneID="3wq-bh-JoT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="10m-dB-bnx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Core" id="Jr1-W1-Ekl"/>
+                    <tabBarItem key="tabBarItem" title="Core" image="record.circle" catalog="system" id="Jr1-W1-Ekl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dHT-0K-Nrp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -313,6 +313,7 @@
     </scenes>
     <resources>
         <image name="cloud.sun" catalog="system" width="128" height="93"/>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
         <image name="sky" width="303" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

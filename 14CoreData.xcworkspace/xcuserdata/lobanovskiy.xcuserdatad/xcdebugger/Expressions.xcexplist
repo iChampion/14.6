@@ -33,5 +33,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "MyCoreTableViewController.tableView(_:numberOfRowsInSection:):MyCoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "MainCore.shared.tasks.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
