@@ -3,29 +3,7 @@ import UIKit
 class MyTableViewController: UITableViewController {
 
     
-    @IBAction func editTableBrn(_ sender: Any) {
-        tableView.setEditing(!tableView.isEditing, animated: true)
-        tableView.allowsSelectionDuringEditing = !tableView.allowsSelectionDuringEditing
-    }
-    @IBAction func addItemBtn(_ sender: Any) {
-        let alertContrl = UIAlertController(title: "Create item", message: nil, preferredStyle: .alert)
-        alertContrl.addTextField { (textField) in
-            textField.placeholder = "name item"
-        }
-        let canBtn = UIAlertAction(title: "cancel", style: .destructive, handler: nil)
-        let btn = UIAlertAction(title: "add", style: .cancel) { alert in
-            guard let textField = alertContrl.textFields?.first,
-                let nameToSave = textField.text else {
-                  return
-              }
-            Main.shared.addItem(nameItem: nameToSave)
-            //print(Main.shared.Items.count)
-            self.tableView.reloadData()
-        }
-        alertContrl.addAction(btn)
-        alertContrl.addAction(canBtn)
-        present(alertContrl, animated: true, completion: nil)
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +99,29 @@ class MyTableViewController: UITableViewController {
 
     }
     
+    @IBAction func editTableBrn(_ sender: Any) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        tableView.allowsSelectionDuringEditing = !tableView.allowsSelectionDuringEditing
+    }
+    @IBAction func addItemBtn(_ sender: Any) {
+        let alertContrl = UIAlertController(title: "Create item", message: nil, preferredStyle: .alert)
+        alertContrl.addTextField { (textField) in
+            textField.placeholder = "name item"
+        }
+        let canBtn = UIAlertAction(title: "cancel", style: .destructive, handler: nil)
+        let btn = UIAlertAction(title: "add", style: .cancel) { alert in
+            guard let textField = alertContrl.textFields?.first,
+                let nameToSave = textField.text else {
+                  return
+              }
+            Main.shared.addItem(nameItem: nameToSave)
+            //print(Main.shared.Items.count)
+            self.tableView.reloadData()
+        }
+        alertContrl.addAction(btn)
+        alertContrl.addAction(canBtn)
+        present(alertContrl, animated: true, completion: nil)
+    }
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

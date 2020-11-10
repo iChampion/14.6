@@ -48,18 +48,38 @@ class MyCoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = MainCore.shared.tasks[indexPath.row]
-        if item.isComplete  {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//            item.setValue(true, forKeyPath: "isComp")
-        }else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        if tableView.allowsSelectionDuringEditing {
+            let alertContrl = UIAlertController(title: "Change item", message: nil, preferredStyle: .alert)
+            alertContrl.addTextField { (textField) in
+                textField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+            }
+            let canBtn = UIAlertAction(title: "cancel", style: .destructive, handler: nil)
+            let btn = UIAlertAction(title: "save", style: .cancel) { alert in
+                guard let textField = alertContrl.textFields?.first,
+                    let nameToSave = textField.text else {
+                      return
+                  }
+                MainCore.shared.changeName(at: indexPath.row, name: nameToSave)
+                //print(Main.shared.Items.count)
+                self.tableView.reloadData()
+            }
+            alertContrl.addAction(btn)
+            alertContrl.addAction(canBtn)
+            present(alertContrl, animated: true, completion: nil)
+           
+//            self.tableView.reloadData()
+        }else{
+            if MainCore.shared.changeState(at: indexPath.row){
+                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            }else {
+                tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            }
         }
     }
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//        MainCore.shared.moveItem(f: fromIndexPath.row, to: to.row)
+        MainCore.shared.moveItem(f: fromIndexPath.row, to: to.row)
         tableView.reloadData()
     }
     
@@ -81,6 +101,8 @@ class MyCoreTableViewController: UITableViewController {
     }
     @IBAction func editBtn(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        tableView.allowsSelectionDuringEditing = !tableView.allowsSelectionDuringEditing
+
     }
 
 }

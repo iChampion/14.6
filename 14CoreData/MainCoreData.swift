@@ -59,6 +59,53 @@ class MainCore {
         }
     }
     
+    func changeState(at index: Int) -> Bool {
+        tasks[index].isComplete = !(tasks[index].isComplete)
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
+        do{
+            let result = try context.fetch(req)
+            for i in result as! [NSManagedObject]{
+                let currenttask = i.value(forKey: "name") as! String
+                if tasks[index].name == currenttask{
+                    i.setValue(tasks[index].isComplete, forKeyPath: "isComp")
+                    try context.save()
+                }
+            }
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        return tasks[index].isComplete
+    }
+    
+    func changeName(at index: Int, name: String){
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoEntities")
+        do{
+            let result = try context.fetch(req)
+            for i in result as! [NSManagedObject]{
+                let currenttask = i.value(forKey: "name") as! String
+                if tasks[index].name == currenttask{
+                    i.setValue(name, forKeyPath: "name")
+                    try context.save()
+                    tasks[index].name = name
+                }
+            }
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+    }
+    
+    func moveItem(f:Int, to: Int){
+        let select = tasks[f]
+        tasks.remove(at: f)
+        tasks.insert(select, at: to)
+        
+    }
     func DeleteTask(task: Int){
         let app = UIApplication.shared.delegate as! AppDelegate
         let context = app.persistentContainer.viewContext

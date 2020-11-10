@@ -62,7 +62,7 @@
                             <constraint firstItem="3wG-Ew-TmV" firstAttribute="top" secondItem="LDF-2u-XJW" secondAttribute="top" id="yrU-SG-zOD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Weather" id="Jti-TK-boG"/>
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud" catalog="system" id="Jti-TK-boG"/>
                     <connections>
                         <outlet property="cityLabel" destination="BXl-WG-rwk" id="IVg-5p-HNr"/>
                         <outlet property="digitalLabel" destination="BOc-x4-MzG" id="2Qh-Vf-wR9"/>
@@ -77,7 +77,7 @@
             <objects>
                 <tableViewController id="7vV-h4-3Ws" customClass="WeatherTableViewController" customModule="_4CoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZFl-f5-w5S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="379.66666666666669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -139,7 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Userdata" id="2rK-DS-2E9"/>
+                    <tabBarItem key="tabBarItem" title="Userdata" image="doc.text" catalog="system" id="2rK-DS-2E9"/>
                     <connections>
                         <outlet property="nameText" destination="elW-Sh-bVs" id="55v-el-Pmq"/>
                         <outlet property="secondNameText" destination="M7h-x7-q0o" id="zX7-A4-KEV"/>
@@ -255,7 +255,7 @@
         <scene sceneID="zlg-Qg-dFB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ofO-Zg-lJt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="realm" id="L3i-Co-tNE"/>
+                    <tabBarItem key="tabBarItem" title="realm" image="line.horizontal.3.decrease" catalog="system" id="L3i-Co-tNE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ubC-OU-m8G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -312,7 +312,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="cloud.sun" catalog="system" width="128" height="93"/>
+        <image name="doc.text" catalog="system" width="115" height="128"/>
+        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
         <image name="record.circle" catalog="system" width="128" height="121"/>
         <image name="sky" width="303" height="480"/>
         <systemColor name="systemBackgroundColor">
